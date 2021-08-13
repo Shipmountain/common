@@ -37,7 +37,7 @@ namespace thread
 			loop_ = loop;
 
 			exit_event_ = ::CreateEvent(NULL, FALSE, 0, 0);
-            if (loop && 0 != wait)
+            if (loop && 0 != timer)
             {
                 timer_event_ = ::CreateEvent(NULL, FALSE, 0, 0);
             }			

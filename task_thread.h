@@ -24,20 +24,20 @@ public:
 	bool begin(const std::function<void(Task&)>& on_task)
 	{
 		m_task_func = on_task;
-		m_thread.Init(ThreadFunc, this, true, (float)-1);
-		m_thread.Start();
+		m_thread.init(ThreadFunc, this, true, (float)-1);
+		m_thread.start();
 		return true;
 	}
 
 	void end()
 	{
-		m_thread.Stop();
+		m_thread.stop();
 	}
 
 	void post_task(const Task& task)
 	{
 		m_TaskQueue.post(task);
-		m_thread.Reset();
+		m_thread.reset();
 	}
 
 	int task_count() const
@@ -52,7 +52,7 @@ private:
         return m_task_func;
     }
 
-    TaskQueue<Task>& get_task_queue()
+    queue::TaskQueue<Task>& get_task_queue()
     {
         return m_TaskQueue;
     }
@@ -66,7 +66,7 @@ private:
 			return 0;
 		}
 
-		TaskQueue<Task>& _TaskQueue = pImpl->get_task_queue();
+        queue::TaskQueue<Task>& _TaskQueue = pImpl->get_task_queue();
 		std::function<void(Task&)> _TaskFunc = pImpl->get_task_fun();
 
 		Task task;
@@ -82,7 +82,7 @@ private:
 	}
 
 private:
-	mutable TaskQueue<Task> m_TaskQueue;
+	mutable queue::TaskQueue<Task> m_TaskQueue;
 	Thread m_thread;
 	std::function<void(Task&)> m_task_func;
 };
