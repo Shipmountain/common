@@ -17,7 +17,7 @@ namespace thread
 		}
 
 
-		Thread(thread_func func, void* hdl, bool bLoop = true, float wait = 5)
+		Thread(thread_func func, void* hdl, bool bLoop = true, unsigned wait = 5)
             :is_start_(false),thread_handle_(NULL)
         {
 			init(func,hdl,bLoop,wait);

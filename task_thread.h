@@ -24,7 +24,7 @@ public:
 	bool begin(const std::function<void(Task&)>& on_task)
 	{
 		m_task_func = on_task;
-		m_thread.init(ThreadFunc, this, true, (float)-1);
+		m_thread.init(ThreadFunc, this, true, -1);
 		m_thread.start();
 		return true;
 	}

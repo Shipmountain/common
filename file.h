@@ -126,6 +126,11 @@ namespace file
 	{
 		return ::CopyFileA(src.c_str(), dst.c_str(), FALSE)?true:false;
 	}
+
+    static bool rename_file(const std::string& old_name, const std::string& new_name)
+    {
+        return rename(old_name.c_str(), new_name.c_str()) == 0;
+    }
 };
 
 #endif  // _FILE_H_
