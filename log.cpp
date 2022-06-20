@@ -436,7 +436,7 @@ namespace Log
             size_t buffer_size = _vscprintf(format, argptr) + pos + LOG_TAIL_LEN;
             if (buffer_size > buffer_a_.size())
             {
-                int mult = GetMultiple(buffer_size, LOG_BUFFER_LEN);
+                size_t mult = GetMultiple(buffer_size, LOG_BUFFER_LEN);
                 buffer_a_.resize(LOG_BUFFER_LEN*mult);
             }
 
@@ -478,7 +478,7 @@ namespace Log
             size_t buffer_size = _vscwprintf(format, argptr) + pos + LOG_TAIL_LEN;
             if (buffer_size > buffer_w_.size())
             {
-                int mult = GetMultiple(buffer_size, LOG_BUFFER_LEN);
+                size_t mult = GetMultiple(buffer_size, LOG_BUFFER_LEN);
                 buffer_w_.resize(LOG_BUFFER_LEN*mult);
                 buffer_a_.resize(LOG_BUFFER_LEN*mult);
             }
