@@ -107,7 +107,6 @@ namespace file
             path.erase(path.size() - 1);
             ch = path[path.size() - 1];
         }
-        path[path.size() + 1] = 0;
 
         SHFILEOPSTRUCTA file_op;
         ZeroMemory((void*)&file_op, sizeof(SHFILEOPSTRUCTA));
